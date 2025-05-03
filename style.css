@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(63, 58, 50);
+}
+
+h1 {
+    color: rgb(255, 0, 0);
+    text-align: center;
+}
+
+* {
+    color: rgb(255, 255, 255);
+    font-family: verdana;
+    font-size: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(100, 100, 100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.cell:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+.row {
+    display: flex;
+}

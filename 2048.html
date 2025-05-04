@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Spiel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Überschrift für das 2048-Spiel -->
+        <h1>2048</h1>
+    </header>
+    <main>
+        <!-- Bereich für das eigentliche 2048-Spiel -->
+        <section id="game-2048">
+            <div id="game-container"></div>
+            <button id="restart-2048">Neustarten</button>
+            <div style="display: flex; gap: 32px; justify-content: center; margin-top: 8px;">
+                <span id="score-2048-box" class="play-2048-btn" style="pointer-events: none; cursor: default;">
+                    Punkte: <span id="score-value">0</span>
+                </span>
+                <span id="highscore-2048-box" class="play-2048-btn" style="pointer-events: none; cursor: default;">
+                    Highscore: <span id="highscore-2048">0</span>
+                </span>
+            </div>
+        </section>
+        <!-- Link zurück zur Hauptseite -->
+        <a href="index.html" class="back-link">Zurück zur Hauptseite</a>
+    </main>
+    <script src="2048.js"></script>
+    <script>
+        // Simple static preview for 2048
+        const previewBoard = [
+            [0, 2, 0, 0],
+            [0, 4, 2, 0],
+            [0, 0, 8, 0],
+            [0, 0, 0, 0]
+        ];
+        const previewContainer = document.getElementById('preview-2048');
+        previewBoard.forEach(row => {
+            row.forEach(cell => {
+                const tile = document.createElement('div');
+                tile.className = 'preview-tile' + (cell ? ' tile-' + cell : '');
+                tile.textContent = cell ? cell : '';
+                previewContainer.appendChild(tile);
+            });
+        });
+
+        // Load highscore from localStorage
+        document.getElementById('highscore-2048').textContent =
+            localStorage.getItem('highscore-2048') || 0;
+    </script>
+</body>
+</html> 

@@ -11,23 +11,50 @@
         <h1>Willkommen auf meiner Website!</h1>
     </header>
     <main>
-        <p>Das ist der Inhalt meiner einfachen Website.</p>
-        <ul>
-            <li>Ein erster Punkt</li>
-            <li>Ein zweiter Punkt</li>
-        </ul>
+        <!-- Link zur Aboseite -->
         <a href="profit.html">klick ma bidde!</a>
-
-        <!-- Tic Tac Toe Section -->
-        <section id="tic-tac-toe">
-            <h2>Tic Tac Toe</h2>
-            <div id="board"></div>
-            <p id="status">Spieler X ist am Zug</p>
-        </section>
+        
+        <!-- 2048-Vorschau und Highscore/Start-Button Bereich -->
+        <div class="preview-2048-wrapper">
+            <h2 class="preview-2048-heading">2048:</h2>
+            <div class="preview-2048-section">
+                <!-- Vorschau des 2048-Spiels (statisch) -->
+                <div id="preview-2048"></div>
+                <!-- Highscore-Anzeige und Button zum Starten des Spiels -->
+                <div class="preview-2048-info">
+                    <a id="highscore-2048-box" class="play-2048-btn">
+                        Highscore: <span id="highscore-2048">0</span>
+                    </a>
+                    <a href="2048.html" class="play-2048-btn play-2048-main-btn">2048 spielen</a>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Meine einfache Website</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="2048.js"></script>
+    <script>
+        // Erstellt eine statische Vorschau für das 2048-Spiel
+        const previewBoard = [
+            [0, 2, 0, 0],
+            [0, 4, 2, 0],
+            [0, 0, 8, 0],
+            [0, 0, 0, 0]
+        ];
+        const previewContainer = document.getElementById('preview-2048');
+        previewBoard.forEach(row => {
+            row.forEach(cell => {
+                const tile = document.createElement('div');
+                tile.className = 'preview-tile' + (cell ? ' tile-' + cell : '');
+                tile.textContent = cell ? cell : '';
+                previewContainer.appendChild(tile);
+            });
+        });
+
+        // Lädt den Highscore aus dem lokalen Speicher
+        document.getElementById('highscore-2048').textContent =
+            localStorage.getItem('highscore-2048') || 0;
+    </script>
 </body>
 </html>
